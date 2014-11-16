@@ -1,0 +1,217 @@
+<! DOCTYPE HTML>	
+
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+   		<meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+   		<meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+		<title>第一次作业</title>
+		<link rel="stylesheet" type="text/css" href="tw_first.css">
+		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+	</head>	
+	<body >
+		<div class="header-top">
+			<span class="top-left">
+				<a href=""><b>登录</b></a>
+				<a href=""><b>注册</b></a>
+			</span>
+			<span class="top-right">
+				<a href=""><b>我的订单</b></a>
+				<a href=""><b>购物车</b></a>
+			</span>
+		</div>
+
+		<div class="list">
+			<ul>
+				<li>光盘</li>
+				<li>U盘</li>
+				<li>硬盘</li>
+			</ul>
+			<img src="./homework/pics/disk/fancy-disk.jpg">
+			<div class="miaoshu">
+				<p><h3>小清新光光盘</h3></p>
+				<p><h3>2GB文艺小清新光盘十张</h3></p>
+				<p><h3>￥35元</h3></p>
+			</div>
+		</div>
+		<div class="guangpan">
+			<h4>光盘</h4>
+			<hr/ style="border-color:black;">
+			<table>
+				<tr>
+					<td>小清新光盘</td>
+					<td>婚庆光盘</td>
+					<td>1TB大容量光盘</td>
+				</tr>
+				<tr>
+					<td><img src="./homework/pics/disk/fancy-disk.jpg" width=350 height=350></td>
+					<td><img src="./homework/pics/disk/marriage-disk.jpg" width=350 height=350></td>
+					<td style="padding-left: 25px;"><img src="./homework/pics/disk/1TB-disk.jpg"  width=330 height=330></td>
+				</tr>
+				<tr>
+					<td>小清新、小文艺35元/10张</td>
+					<td>记录你的美好瞬间 50元/10张</td>
+					<td>解放你的硬盘 100元/10张</td>
+				</tr>
+			</table>
+
+			<h4>U盘</h4>
+			<hr/ style="border-color:black;">
+			<table>
+				<tr>
+					<td>Q版U盘</td>
+					<td>手机U盘</td>
+					<td>大容量U盘</td>
+				</tr>
+				<tr>
+					<td><img src="./homework/pics/U-disk/pig-U-disk.jpg" width=400 height=300></td>
+					<td><img src="./homework/pics/U-disk/mobile-phone-disk.jpg" width=400 height=300></td>
+					<td><img src="./homework/pics/U-disk/32GB-U-disk.jpg"  width=400 height=300></td>
+				</tr>
+				<tr>
+					<td>2GB萌萌哒小猪猪 20元</td>
+					<td>2GB手机、电脑两用U盘 25元</td>
+					<td>32GB超大容量U盘 45元</td>
+				</tr>
+			</table>
+
+			<h4>硬盘</h4>
+			<hr/ style="border-color:black;">
+			<table>
+				<tr>
+					<td>固态硬盘</td>
+					<td>台式机硬盘</td>
+					<td>笔记本硬盘</td>
+				</tr>
+				<tr>
+					<td><img src="./homework/pics/hard-disk/ssd-disk.jpg" width=400 height=300></td>
+					<td><img src="./homework/pics/hard-disk/normal-disk.jpg" width=400 height=300></td>
+					<td><img src="./homework/pics/hard-disk/small-disk.jpg"  width=400 height=300></td>
+				</tr>
+				<tr>
+					<td>128GB 固态硬盘 250元</td> 
+					<td>500GB 台式机硬盘 300元</td>
+					<td>320GB 笔记本用小硬盘 250元</td>
+				</tr>
+			</table>
+
+		</div>
+
+		<div class="addrinfo">
+			<div class="coninfo">
+				<h2>联系我们</h2>
+				<ul>
+					<li>武汉市洪山区光谷世界城广场1616</li>
+					<li>Email:pandar_disk@gmail.com</li>
+					<li>Tel:15520552070</li>
+				</ul>
+			</div>
+
+			<div class="ppt">
+				<h2>我们的位置</h2>
+				<div  class="mapinfo" id="dituContent">
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+	    //创建和初始化地图函数：
+	    function initMap(){
+	        createMap();//创建地图
+	        setMapEvent();//设置地图事件
+	        addMapControl();//向地图添加控件
+	        addMarker();//向地图中添加marker
+	    }
+	    
+	    //创建地图函数：
+	    function createMap(){
+	        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+	        var point = new BMap.Point(114.413195,30.512973);//定义一个中心点坐标
+	        map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+	        window.map = map;//将map变量存储在全局
+	    }
+	    
+	    //地图事件设置函数：
+	    function setMapEvent(){
+	        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+	        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+	        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+	        map.enableKeyboard();//启用键盘上下左右键移动地图
+	    }
+	    
+	    //地图控件添加函数：
+	    function addMapControl(){
+	        //向地图中添加缩放控件
+		var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+		map.addControl(ctrl_nav);
+	        //向地图中添加缩略图控件
+		var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+		map.addControl(ctrl_ove);
+	        //向地图中添加比例尺控件
+		var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+		map.addControl(ctrl_sca);
+	    }
+	    
+	    //标注点数组
+	    var markerArr = [{title:"我们的位置",content:"我的备注",point:"114.410922|30.512164",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+			 ];
+	    //创建marker
+	    function addMarker(){
+	        for(var i=0;i<markerArr.length;i++){
+	            var json = markerArr[i];
+	            var p0 = json.point.split("|")[0];
+	            var p1 = json.point.split("|")[1];
+	            var point = new BMap.Point(p0,p1);
+				var iconImg = createIcon(json.icon);
+	            var marker = new BMap.Marker(point,{icon:iconImg});
+				var iw = createInfoWindow(i);
+				var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+				marker.setLabel(label);
+	            map.addOverlay(marker);
+	            label.setStyle({
+	                        borderColor:"#808080",
+	                        color:"#333",
+	                        cursor:"pointer"
+	            });
+				
+				(function(){
+					var index = i;
+					var _iw = createInfoWindow(i);
+					var _marker = marker;
+					_marker.addEventListener("click",function(){
+					    this.openInfoWindow(_iw);
+				    });
+				    _iw.addEventListener("open",function(){
+					    _marker.getLabel().hide();
+				    })
+				    _iw.addEventListener("close",function(){
+					    _marker.getLabel().show();
+				    })
+					label.addEventListener("click",function(){
+					    _marker.openInfoWindow(_iw);
+				    })
+					if(!!json.isOpen){
+						label.hide();
+						_marker.openInfoWindow(_iw);
+					}
+				})()
+	        }
+	    }
+	    //创建InfoWindow
+	    function createInfoWindow(i){
+	        var json = markerArr[i];
+	        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+	        return iw;
+	    }
+	    //创建一个Icon
+	    function createIcon(json){
+	        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+	        return icon;
+	    }
+	    
+	    initMap();//创建和初始化地图
+	</script>
+</html>
+
