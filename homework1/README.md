@@ -7,5 +7,5 @@ homework:
     
 index1.html:
     html file
-tw_first.css    
+tw_first.css:    
     css file
